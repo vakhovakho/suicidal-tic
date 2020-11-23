@@ -67,7 +67,7 @@ function checkForWin(a, b, symbol) {
         newBoard[a][b] = symbol;
     }
 
-    return checkForRowsWin(newBoard) || checkForDiagonalWin(newBoard);
+    return checkForRowsWin(newBoard) || checkForDiagonalWin(newBoard) || checkForColumnsWin(newBoard);
 }
 
 function checkForRowsWin(newBoard) {
@@ -76,6 +76,19 @@ function checkForRowsWin(newBoard) {
             continue;
         }
         if(newBoard[i][0] === newBoard[i][1] && newBoard[i][0] === newBoard[i][2]) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function checkForColumnsWin(newBoard) {
+    for(let i = 0; i < newBoard.length; i++) {
+        if(newBoard[0][i] === null) {
+            continue;
+        }
+        if(newBoard[0][i] === newBoard[1][i] && newBoard[0][i] === newBoard[2][i]) {
             return true;
         }
     }
